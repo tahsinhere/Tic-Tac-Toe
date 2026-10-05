@@ -1,0 +1,183 @@
+.shell {
+  --ink: #14120b;
+  --paper: #ebe6dc;
+  --paper-deep: #ddd6c8;
+  --x: #9a3412;
+  --o: #115e59;
+  --win: #ca8a04;
+  --shadow: #14120b;
+
+  width: min(100%, 22rem);
+  padding: 1.75rem 1.5rem 1.25rem;
+  background: var(--paper);
+  border: 2px solid var(--ink);
+  box-shadow: 6px 6px 0 var(--shadow);
+}
+
+.masthead {
+  text-align: center;
+  margin-bottom: 1.25rem;
+}
+
+.eyebrow {
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--ink) 55%, transparent);
+  margin-bottom: 0.35rem;
+}
+
+.title {
+  font-family: "Libre Baskerville", Georgia, serif;
+  font-size: 1.85rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  color: var(--ink);
+}
+
+.players {
+  margin-top: 0.65rem;
+  font-size: 0.875rem;
+  color: color-mix(in srgb, var(--ink) 70%, transparent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  flex-wrap: wrap;
+}
+
+.mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.35rem;
+  height: 1.35rem;
+  font-family: "Libre Baskerville", Georgia, serif;
+  font-weight: 700;
+  font-size: 0.95rem;
+  line-height: 1;
+}
+
+.mark--x {
+  color: var(--x);
+}
+
+.mark--o {
+  color: var(--o);
+}
+
+.status {
+  text-align: center;
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-size: 0.8rem;
+  min-height: 1.25rem;
+  margin-bottom: 1rem;
+  color: var(--ink);
+}
+
+.status--pulse {
+  animation: think 1.2s ease-in-out infinite;
+}
+
+@keyframes think {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.45;
+  }
+}
+
+.board {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  border: 2px solid var(--ink);
+  background: var(--ink);
+}
+
+.cell {
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--paper-deep);
+  border: none;
+  cursor: pointer;
+  font-size: 2.25rem;
+  transition: background 0.12s ease;
+  padding: 0;
+}
+
+.cell:not(:disabled):hover {
+  background: color-mix(in srgb, var(--paper) 70%, white);
+}
+
+.cell:disabled {
+  cursor: default;
+}
+
+.cell .mark {
+  width: auto;
+  height: auto;
+  font-size: 2.1rem;
+}
+
+.cell--win {
+  background: color-mix(in srgb, var(--win) 35%, var(--paper-deep));
+}
+
+.cell--win .mark--x,
+.cell--win .mark--o {
+  color: var(--ink);
+}
+
+.reset {
+  display: block;
+  width: 100%;
+  margin-top: 1.25rem;
+  padding: 0.65rem 1rem;
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: var(--ink);
+  color: var(--paper);
+  border: 2px solid var(--ink);
+  cursor: pointer;
+  transition:
+    transform 0.1s ease,
+    box-shadow 0.1s ease;
+  box-shadow: 3px 3px 0 color-mix(in srgb, var(--ink) 40%, transparent);
+}
+
+.reset:hover {
+  transform: translate(-1px, -1px);
+  box-shadow: 4px 4px 0 color-mix(in srgb, var(--ink) 40%, transparent);
+}
+
+.reset:active {
+  transform: translate(1px, 1px);
+  box-shadow: 1px 1px 0 color-mix(in srgb, var(--ink) 40%, transparent);
+}
+
+.credit {
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid color-mix(in srgb, var(--ink) 15%, transparent);
+  text-align: center;
+}
+
+.credit__name {
+  font-family: "Libre Baskerville", Georgia, serif;
+  font-size: 0.9rem;
+  font-style: italic;
+  color: color-mix(in srgb, var(--ink) 65%, transparent);
+}
+
+.credit__name::before {
+  content: "— ";
+}

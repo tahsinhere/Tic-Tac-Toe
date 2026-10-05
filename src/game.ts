@@ -33,6 +33,17 @@ export function getWinner(board: Board): Player | null {
   return null;
 }
 
+/** Returns the indices of the winning line, or null if there is no winner. */
+export function getWinningLine(board: Board): number[] | null {
+  for (const line of WIN_LINES) {
+    const [a, b, c] = line;
+    if (board[a] !== null && board[a] === board[b] && board[a] === board[c]) {
+      return line;
+    }
+  }
+  return null;
+}
+
 /** Returns true when every cell is filled (no nulls remain). */
 export function isBoardFull(board: Board): boolean {
   for (let i = 0; i < board.length; i++) {
